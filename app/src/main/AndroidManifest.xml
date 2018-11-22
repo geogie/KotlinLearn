@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.george.kotlinlearn">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".ui.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.activities.MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.activities.SettingsActivity"
+            android:label="@string/settings"/>
+        <!--parentActivityName作用：
+            1、左上角给子-Activity加一个返回button
+            2、如果父Activity不在当前栈内，这个属性不起作用
+            3、如果父Activity在当前栈，设置了该属性，父Activity会经历先销毁后创建的过程
+            4、如果设置父 Activity 启动模式为singleTask或singleTop，那么父 Activity 就具有与singleTask一样清理栈的作用，使得父 Activity得以重新独占设置与交互 -->
+        <activity
+            android:name=".ui.activities.DetailActivity"
+            android:parentActivityName=".ui.activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.george.kotlinlearn.ui.activities.MainActivity" />
+        </activity>
+    </application>
+
+</manifest>
